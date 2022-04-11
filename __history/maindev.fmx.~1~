@@ -1,0 +1,21 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 667
+  ClientWidth = 389
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=TWD'
+      'Server=pan-therra.ru'
+      'User_Name=postgres'
+      'Password=Ly)vwW-D2.c)o0Hp'
+      'DriverID=PG')
+    Left = 336
+    Top = 16
+  end
+end

@@ -1,0 +1,67 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 667
+  ClientWidth = 389
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Button1: TButton
+    Position.X = 160.000000000000000000
+    Position.Y = 600.000000000000000000
+    TabOrder = 2
+    Text = 'Button1'
+    OnClick = Button1Click
+  end
+  object TWDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=TWD'
+      'Server=pan-therra.ru'
+      'User_Name=postgres'
+      'Password=Ly)vwW-D2.c)o0Hp'
+      'DriverID=PG'
+      'ExtendedMetadata=True'
+      'Pooled=False')
+    Connected = True
+    Left = 296
+    Top = 24
+  end
+  object GroupsQuery: TFDQuery
+    Active = True
+    Connection = TWDConnection1
+    SQL.Strings = (
+      'SELECT *  FROM  "Groups"')
+    Left = 200
+    Top = 24
+  end
+  object GroupsDataSource: TDataSource
+    DataSet = GroupsQuery
+    Left = 88
+    Top = 32
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSource = GroupsDataSource
+    ScopeMappings = <>
+    Left = 96
+    Top = 408
+  end
+  object FDPhysPgDriverLink1: TFDPhysPgDriverLink
+    VendorHome = 'C:\psqlodbc\32'
+    Left = 264
+    Top = 216
+  end
+  object GroupTable: TFDTable
+    AutoCalcFields = False
+    IndexFieldNames = 'Id'
+    MasterSource = GroupsDataSource
+    Connection = TWDConnection1
+    FetchOptions.AssignedValues = [evLiveWindowFastFirst]
+    FetchOptions.LiveWindowFastFirst = True
+    SchemaName = 'public'
+    TableName = '"Groups"'
+    Left = 272
+    Top = 368
+  end
+end

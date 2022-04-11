@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D51E1FF5-3742-458C-919D-57593C157205}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TWD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\PGD.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TWD">
+        <MSBuild Projects="TWD.dproj"/>
+    </Target>
+    <Target Name="TWD:Clean">
+        <MSBuild Projects="TWD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TWD:Make">
+        <MSBuild Projects="TWD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PGD">
+        <MSBuild Projects="..\PGD.dproj"/>
+    </Target>
+    <Target Name="PGD:Clean">
+        <MSBuild Projects="..\PGD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PGD:Make">
+        <MSBuild Projects="..\PGD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TWD;PGD"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TWD:Clean;PGD:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TWD:Make;PGD:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
